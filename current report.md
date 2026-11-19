@@ -122,3 +122,23 @@ Render settings: Eevee `BLENDER_EEVEE`, 24 samples, 540x960, 24 fps, frames 1-12
 Verification evidence: keyframe counts read back (hero/ring rotation 2 keys per channel + 3 location keys; title 2 keys per channel); active camera `Camera`; engine/resolution/fps read back; ffprobe: h264, 540x960, 24/1 fps, 120 frames, 5.0 s; preview inspected visually.
 
 Issues: `FFMPEG` file_format needs `media_type='VIDEO'` in Blender 5.3 (fixed). `D:\AI-Operations-Vault\START-HERE.md` was not found, so the vault could not be consulted. The project folder was not a Git repo; a local one was initialised. Not pushed (no remote, no permission).
+
+
+## Independent review by ChatGPT — 2026-11-19
+
+**Current milestone status: PASS — first real Blender animation generated and committed locally.** This section supersedes earlier status lines above that say the live handshake or integration smoke test remain pending.
+
+Independent checks performed against the local machine and repository:
+- Confirmed all four deliverables exist in `projects/integration-smoke-test/`: `integration_smoke_test.blend`, `preview.png`, `animation.mp4`, and `production_notes.md`.
+- Confirmed actual file sizes at inspection: blend 149,367 bytes; preview 573,785 bytes; MP4 286,756 bytes; notes 1,561 bytes.
+- Ran FFprobe independently against `animation.mp4`: H.264, 540x960, 24/1 fps, 120 frames, 5.000 seconds.
+- Confirmed Blender executable reports version 5.3.0.
+- Confirmed Git repository root is `D:/Projects/BlenderAIStudio`, branch `main`, and HEAD is `f95a169` (`test(integration): add BlendRelay end-to-end smoke test project and outputs`). The deliverables and report are tracked in that commit.
+- Confirmed working tree was clean at inspection. No Git remote is configured. No push was made.
+- The nested integration-smoke-test folder is part of the root repository; it is not a separate Git repository. The root commit is the checkpoint.
+
+Review notes:
+- File existence, saved project, image dimensions (as reported by production notes), and video encoding/duration are verified. The full visual composition and animation playback have not yet been independently inspected by ChatGPT; visual quality is therefore accepted provisionally based on Antigravity's preview inspection and notes.
+- The default Blender startup file was not overwritten. The currently open GUI document was intentionally replaced with the test scene, as disclosed by the builder.
+- Next phase should be production-foundation architecture and a small reusable asset/animation pipeline, not another connectivity test. Preserve this working smoke-test project as a regression fixture.
+- Before further implementation, Antigravity should refresh the top-of-file status summary and remove or mark superseded statements in earlier sections so `current report.md` presents one coherent current state.
