@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-19  
 **Workstream:** Environment setup and Blender–Antigravity integration  
-**Status:** Core tools installed; restart and live UI handshake remain.
+**Status:** Live Blender integration and first animation smoke test PASS. Project is published to GitHub; future commits must be created directly on GitHub, not locally.
 
 ## Verified machine
 
@@ -142,3 +142,13 @@ Review notes:
 - The default Blender startup file was not overwritten. The currently open GUI document was intentionally replaced with the test scene, as disclosed by the builder.
 - Next phase should be production-foundation architecture and a small reusable asset/animation pipeline, not another connectivity test. Preserve this working smoke-test project as a regression fixture.
 - Before further implementation, Antigravity should refresh the top-of-file status summary and remove or mark superseded statements in earlier sections so `current report.md` presents one coherent current state.
+
+
+## GitHub publication and permanent commit policy — 2026-11-19
+
+- Repository: https://github.com/jeiso-n/BlenderAIStudio (owner: jeiso-n), default branch main.
+- Published the verified project and its history to the empty GitHub repository. Initial published commits: f95a169 (integration smoke test) and 944c822 (independent review).
+- Confirmed GitHub can retrieve current report.md and the H.264 animation MP4. The published MP4 blob SHA is 8d8d086e5bd4e11175be5c30f8c7ada8e1f8a025.
+- Local origin is configured to the GitHub repository; local main tracked origin/main at the time of initial push. Working tree was clean after push.
+- **Permanent user instruction:** Never create commits locally on the user's Windows workstation. All future commits must be created directly on GitHub after review (GitHub API/connector or another remote-only workflow). Antigravity must not run git commit locally or create local commits merely to push them. ChatGPT reviews and publishes approved changes directly to GitHub.
+- The two historical commits above predate clarification of this policy and were published as the initial project history. No new local commit was created during publication.
