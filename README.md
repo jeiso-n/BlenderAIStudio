@@ -11,11 +11,35 @@ An AI-directed 3D animation production studio built around **Blender** and coord
 - **GitHub:** canonical source of truth. Development commits are created directly on GitHub; do not create local Git commits.
 
 ## Current milestone
-**Passed:** Blender 5.3.0 is connected to Antigravity through BlendRelay MCP 0.7.8. A first 5-second vertical 3D animation was generated and verified.
-
-The integration smoke test uses Eevee at 540×960, 24 fps, 120 frames, H.264. The saved `.blend` project, preview image, MP4, and production notes are the initial regression fixture.
+**Passed:** Blender 5.3.0 is connected to Antigravity through BlendRelay MCP 0.7.8. The integration smoke test produced an editable Blender scene, still image, and H.264 animation. The first full production animation preview, **Pole Drift**, has also been rendered and technically verified; it remains in review and needs framing/exit/wheel/smoke refinements before final rendering.
 
 See [current report](current%20report.md) for environment details, verification evidence, limitations, and next steps.
+
+## Animation Preview & Test Gallery
+
+This gallery is chronological. Each entry identifies the purpose of the test, its render settings, and its review status. Screen recordings document the corresponding production workflow.
+
+### 1. Blender / BlendRelay integration smoke test
+**Status:** Integration test — passed
+
+A first end-to-end check that Antigravity could control a live Blender session through BlendRelay, construct a real 3D scene, save an editable project, and render a video.
+
+- **Rendered video:** [animation.mp4](projects/integration-smoke-test/animation.mp4)
+- **Screen recording:** [test 1 screen recording.mp4](projects/integration-smoke-test/test%201%20screen%20recording.mp4)
+- **Editable Blender project:** [integration_smoke_test.blend](projects/integration-smoke-test/integration_smoke_test.blend)
+- **Preview still:** [preview.png](projects/integration-smoke-test/preview.png)
+- **Settings:** Eevee, 540×960 portrait, 24 fps, 120 frames / 5 seconds, 24 samples, H.264.
+- **Scene:** rotating metallic icosahedron and counter-rotating ring on a lit studio pedestal, with 3D title and colored studio lighting.
+
+### 2. Pole Drift — first production preview
+**Status:** Preview rendered; awaiting corrective pass and independent visual approval
+
+A low-poly sports car enters a nighttime drift arena, circles an illuminated pole in a sustained drift, and begins its exit. The preview demonstrates the first complete animation production workflow beyond the integration fixture.
+
+- **Render target:** 640×360 landscape, 24 fps, 360 frames / 15 seconds, Eevee, 8 samples, H.264.
+- **Scene:** low-poly orange sports car, illuminated central pole, nighttime asphalt arena, skid marks, stylized tire smoke, cyan/blue ambient accents and warm pole lighting.
+- **Review:** technical checks passed; visual corrections are still required for camera-edge clearance, exit framing, wheel placement, and smoke presentation.
+- **Rendered video and screen recording:** not yet present in the GitHub repository. Local outputs must be uploaded before links can be published here.
 
 ## Production principles
 1. Use real Blender scenes and editable `.blend` files.
@@ -25,10 +49,12 @@ See [current report](current%20report.md) for environment details, verification 
 5. Review outputs and test evidence before declaring a task complete.
 6. Create commits directly on GitHub. Never create local commits on the user's computer.
 7. Never push or publish unreviewed changes.
+8. Publish every animation preview/test render and its corresponding screen recording in this gallery, with a description, settings, and status.
 
 ## Repository layout
 - `current report.md` — durable project status and verification log.
 - `projects/integration-smoke-test/` — first verified Blender production test.
+- `projects/pole-drift/` — first full production animation.
 - `docs/` — architecture and workflow documentation (to be developed).
 - `agents/` — agent roles and orchestration (to be developed).
 - `scripts/` — Blender and production automation (to be developed).
@@ -37,7 +63,7 @@ See [current report](current%20report.md) for environment details, verification 
 - `renders/` — preview and final outputs (to be developed).
 
 ## Getting started
-Install Blender 5.3 or a compatible supported release, configure BlendRelay MCP for your agent environment, and open the `.blend` smoke-test project in Blender. Detailed setup and production workflow documentation will be added as the studio foundation is implemented.
+Install Blender 5.3 or a compatible supported release, configure BlendRelay MCP for your agent environment, and open the relevant `.blend` project in Blender. Detailed setup and production workflow documentation will be added as the studio foundation is implemented.
 
 ## Current constraints
-The initial workstation has an AMD Ryzen 5 5500U, 7.3 GB usable RAM, and integrated AMD Radeon graphics. Begin with Eevee, modest geometry, low texture sizes, and reduced-resolution previews. Treat 1080×1920 at 30 fps as a final-output target, not a default preview setting.
+The initial workstation has an AMD Ryzen 5 5500U, 7.3 GB usable RAM, and integrated AMD Radeon graphics. Begin with Eevee, modest geometry, low texture sizes, and reduced-resolution previews. Use higher-resolution final settings only after preview approval and performance checks.

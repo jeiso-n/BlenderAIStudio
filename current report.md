@@ -1,8 +1,22 @@
 # Current Report — Blender AI Animation Studio
 
 **Last updated:** 2026-11-19
-**Current phase:** Foundation planning after successful Blender integration smoke test
-**Status:** Blender–Antigravity connection and first real 3D animation test PASS. GitHub repository established; source documentation is being migrated directly to GitHub.
+**Current phase:** First animation production preview and studio workflow validation
+**Status:** Blender–Antigravity integration smoke test passed. Pole Drift preview rendered and technically verified; visual corrections remain before final approval. GitHub gallery documentation is being maintained through remote-only commits.
+
+## Latest update — GitHub video gallery publication check (2026-11-19)
+- Repository: https://github.com/jeiso-n/BlenderAIStudio
+- Verified remote branch head before this documentation update: `64d1ba9f4b807561a2a78541010806d77bd6ed88`.
+- Verified integration smoke-test artifacts in `projects/integration-smoke-test/`:
+  - `animation.mp4` — 286,756 bytes; H.264, 540×960, 24 fps, 120 frames, 5 seconds.
+  - `test 1 screen recording.mp4` — 18,050,712 bytes.
+  - `integration_smoke_test.blend` — 149,367 bytes.
+  - `preview.png` — 573,785 bytes.
+  - `production_notes.md` — present.
+- The integration screen recording is now confirmed on GitHub. The rendered integration MP4 and editable project assets were already present remotely.
+- **Pole Drift publication is still pending:** GitHub currently has no `projects/pole-drift/` directory. The local `preview.mp4` and `pole drift screen recording.mp4` have not been verified on GitHub. Do not publish links or claim these files are uploaded until the remote directory listing confirms them.
+- README now includes a chronological Animation Preview & Test Gallery, with the integration test linked and Pole Drift clearly marked as awaiting binary upload. No broken or speculative Pole Drift links are included.
+- This documentation checkpoint is created directly on GitHub. No local commit or push is used.
 
 ## Project roles and operating rules
 - Project owner / Creative Director: owns creative direction and approves scope.
@@ -14,6 +28,7 @@
 - **GitHub is the sole source of truth. All commits must be created directly on GitHub. Do not run local `git commit` or create local-only commits on the user's computer.** Use GitHub API / GitHub web operations for remote commits. Do not push local commits.
 - Every meaningful development task must update this root `current report.md` with files changed, tests, evidence, limitations, and next step.
 - ChatGPT independently reviews Antigravity's report and outputs before accepting completion.
+- Every preview/test render and its matching screen recording must be published and listed in the README gallery with project, description, settings, and status.
 
 ## Verified workstation
 - OS: Windows 11 Home, build 26300, 64-bit.
@@ -41,37 +56,56 @@
 - Initial read-only scene inspection returned Scene, active Camera, engine `BLENDER_EEVEE`, and three visible objects: Cube, Light, Camera.
 - The Antigravity Manage MCP panel had a persistent loading issue; agent-side tool invocation nevertheless proved the live integration.
 
-## First end-to-end production test
+## First end-to-end production test — Integration Smoke Test
 **Result: PASS.** Antigravity created a real Blender scene through BlendRelay, saved an editable project, rendered a still and a video, and verified keyframes and output metadata.
 
 Location: `projects/integration-smoke-test/`
-- `integration_smoke_test.blend` — editable Blender project (149,367 bytes at local verification).
-- `preview.png` — rendered 540×960 still (573,785 bytes at local verification).
-- `animation.mp4` — H.264, 540×960, 24 fps, 120 frames, 5.000 seconds (286,756 bytes at local verification).
-- `production_notes.md` — scene construction and render details.
+- `integration_smoke_test.blend` — editable Blender project (149,367 bytes at local verification; now confirmed remotely).
+- `preview.png` — rendered 540×960 still (573,785 bytes at local verification; now confirmed remotely).
+- `animation.mp4` — H.264, 540×960, 24 fps, 120 frames, 5.000 seconds (286,756 bytes; now confirmed remotely).
+- `test 1 screen recording.mp4` — 18,050,712 bytes; now confirmed remotely.
+- `production_notes.md` — scene construction and render details; present remotely.
 
 Scene: dark studio, metallic pedestal, rotating metallic icosahedron, counter-rotating pink ring, two-line 3D title, warm/cyan/magenta area lights, portrait camera.
 Render: Eevee `BLENDER_EEVEE`, 24 samples, 540×960, 24 fps, frames 1–120. Preview approximately 5 seconds; animation approximately 300 seconds.
-Verification: Blender keyframes read back; active camera and render settings checked; FFprobe independently confirmed H.264, 540×960, 24 fps, 120 frames, 5.000 seconds. Preview was visually inspected by the builder; ChatGPT has not yet independently reviewed the actual image/video pixels.
+Verification: Blender keyframes read back; active camera and render settings checked; FFprobe independently confirmed H.264, 540×960, 24 fps, 120 frames, 5.000 seconds. Screen recording and rendered MP4 are present in the remote repository.
 Limitations: no motion blur; title uses scale/rise rather than fade; low resolution and samples are intentional for current hardware. Animation rendered with Blender CLI from the saved file. The default Blender startup file was not overwritten, but the open GUI document was replaced with the test scene.
+
+## First production animation — Pole Drift
+**Result: PREVIEW RENDERED; NEEDS FIXES before final rendering.**
+
+Location expected: `projects/pole-drift/`
+- `preview.mp4` — local preview, 640×360, 24 fps, 360 frames, 15 seconds, H.264; remote upload not yet verified.
+- `preview.png` — preview still (frame 110).
+- `pole_drift.blend` — editable scene.
+- `build_pole_drift.py` — scene rebuild script.
+- `production_notes.md` — production details.
+- `render_pole_drift.py` and `verify_pole_drift.py` — render and verification scripts.
+- `pole drift screen recording.mp4` — local screen recording; remote upload not yet verified.
+
+Scene: low-poly orange sports car with body, cabin, spoiler, lights, four wheels with steering/spin, roll/bounce; nighttime asphalt pad and illuminated pole; skid marks and stylized tire smoke.
+Motion: enters from left, performs two laps around a 6.2m circle at approximately 36–40° slip, then arcs out and recedes.
+Geometry: 5,364 triangles.
+Render: Eevee, 8 samples, 24 fps, frames 1–360. Render time approximately 712 seconds.
+Technical verification: FFprobe reported H.264, 640×360, 24 fps, 360 frames, 15 seconds. Headless reopen of the saved `.blend` passed; keyframes were present on car, wheels, and camera rig; car remained in view during the main drift; no position jumps; car remained grounded and wheels rolled forward.
+Independent review decision: NEEDS FIXES before final render:
+1. Car approaches the frame edge near 8 seconds.
+2. Exit car recedes but remains visible at frame 360.
+3. Wheels are partly embedded in the body sides; improve placement / wheel-arch treatment.
+4. Smoke puffs are faceted and need a more coherent visual treatment.
+Do not render final 1280×720 output until a corrected preview is independently approved.
 
 ## Rendering guidance
 - Workstation is constrained (7.3 GB usable RAM and integrated graphics).
 - Start with Eevee, simple geometry, modest texture sizes, low sample counts, and reduced-resolution previews.
-- Use 360×640 or 540×960 for previews. 1080×1920 at 30 fps is a final-output target only after performance testing.
+- Use 360×640 or 540×960 for portrait previews, and 640×360 for landscape previews.
 - Avoid heavy simulations, dense geometry, large texture libraries, and high-sample photorealistic rendering until benchmarked.
 
-## GitHub migration status
-- Repository: `jeiso-n/BlenderAIStudio` (https://github.com/jeiso-n/BlenderAIStudio).
-- The repository was initially confirmed empty. Initial documentation commits are being created directly through GitHub's API.
-- Remote commits completed so far: README overview (`b6e0b98e98c4c8f4b01a0d41dd6d61fbd3dbb402`) and production notes update (`3b42ffaa9a29ce984e2a7874444c3ef857735773`).
-- The root `.gitignore` and `current report.md` already appeared in the repository during migration inspection; their remote content is being reconciled rather than overwritten blindly.
-- Binary artifacts (`.blend`, `.png`, `.mp4`) still need to be uploaded to GitHub and verified. Do not claim the full smoke-test fixture is migrated until those files are present remotely.
-- An earlier local Git commit `f95a169` exists in the workstation's local repository from before the GitHub-only workflow was clarified. Do not create further local commits, do not push local history, and do not treat that local commit as the canonical GitHub history.
-
-## Next actions
-1. Finish migrating the verified smoke-test project and binary outputs directly to GitHub.
-2. Verify remote tree, file sizes, and commit history.
-3. Have Antigravity adopt GitHub-only commits and current-report updates in its project instructions.
-4. Begin studio foundation architecture: reusable project structure, Blender automation modules, asset/template library, production task orchestration, and quality checks.
-5. Keep the smoke-test project as a regression fixture; do not rebuild or discard it.
+## GitHub migration and publication policy
+- Repository: `jeiso-n/BlenderAIStudio`.
+- GitHub is the canonical source of truth. No local commits and no local pushes.
+- The README contains the chronological Animation Preview & Test Gallery.
+- Verify every binary file through the GitHub remote tree / contents listing before linking it or marking it published.
+- Do not modify the integration smoke-test regression fixture.
+- Next publication step: upload both Pole Drift video files to `projects/pole-drift/`, then update the README gallery with direct links and update this report with remote file sizes / verification.
+- After the Pole Drift corrective pass, publish the corrected preview and its matching screen recording as a new chronological gallery entry; retain the original preview as history.
