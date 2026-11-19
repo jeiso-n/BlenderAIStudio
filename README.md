@@ -55,6 +55,16 @@ A low-poly sports car enters a nighttime drift arena, circles an illuminated pol
 7. Never push or publish unreviewed changes.
 8. Publish every animation preview/test render and its corresponding screen recording in this gallery, with a description, settings, and status.
 
+
+## Audio Production Standard
+
+**Default:** hybrid sound design with background music. Every animation receives a planned audio post-production pass unless silence is an intentional, documented creative decision. The workflow covers picture lock, audio spotting, license-verified sound sourcing, realistic effects, cinematic accents, music, frame-accurate editing, mixing, technical QC, archival, and independent review.
+
+- **Studio standard:** [Audio Production Standard](docs/AUDIO-PRODUCTION-STANDARD.md)
+- **First application:** Pole Drift — sound plan, cue sheet, licensed asset manifest, stems, draft mix, audio-enabled preview, QC report, and final mix/video after approval.
+- **Rights policy:** original or clearly license-compatible audio only; record creator, source, license, URL, and attribution requirements for every external asset.
+- **Preservation:** never overwrite the approved silent visual master; publish audio previews and their matching screen recordings as new chronological gallery entries.
+
 ## Repository layout
 - `current report.md` — durable project status and verification log.
 - `projects/integration-smoke-test/` — first verified Blender production test.

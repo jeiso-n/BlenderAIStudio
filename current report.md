@@ -126,3 +126,17 @@ The owner uploaded the Pole Drift project files to the repository root-level `po
 
 README gallery links now use the actual root-level paths and both videos are verified present. No files were moved or renamed. The earlier statement that Pole Drift upload was pending is superseded by this update. The review decision remains NEEDS FIXES before final render: improve camera-edge clearance, exit framing, wheel placement, and smoke treatment. The documentation checkpoint is created directly on GitHub; no local commit or push.
 
+
+
+## Latest update — Studio audio production standard established (2026-11-19)
+
+**Decision:** The Creative Director approved a hybrid sound identity with background music enabled by default. This is now the studio-wide default for all animations, unless an intentional silence exception is documented.
+
+- Added the canonical standard at `docs/AUDIO-PRODUCTION-STANDARD.md`.
+- Defined the audiovisual workflow: picture lock → audio spotting/cue sheet → license-verified asset sourcing or original creation → sound design → music → frame-accurate edit → mix → technical/listening QC → archive → independent ChatGPT review.
+- Defined rights management: every external asset must have a recorded creator, source URL, exact license, download date and attribution requirement. Unclear or incompatible licenses are rejected.
+- Defined default delivery: preserve the silent visual master; archive project/timeline, stems, lossless mix, license manifest and final muxed video. Keep previews versioned and publish each test preview with its corresponding screen recording in the README gallery.
+- Technical starting points: 48 kHz, 24-bit PCM intermediates where supported, stereo delivery, no clipping, true peak at or below -1 dBTP, and approximately -16 LUFS integrated as a web-video starting point (subject to listening and destination requirements).
+- Pole Drift is the first application. Antigravity must identify the latest approved 15-second, 24 fps picture, create a frame-accurate cue sheet, build realistic engine/tire/environment layers plus restrained cinematic accents and licensed/original electronic music, then produce a draft mix and audio-enabled preview for review.
+- No final audio or public approval is implied by this documentation update. The actual soundtrack, asset licenses, sync, mix and export remain to be built and reviewed.
+- Antigravity must not alter the approved visual animation or overwrite historical files. No local commits/pushes; GitHub remains canonical and ChatGPT publishes reviewed work remotely.
