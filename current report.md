@@ -109,3 +109,20 @@ Do not render final 1280×720 output until a corrected preview is independently 
 - Do not modify the integration smoke-test regression fixture.
 - Next publication step: upload both Pole Drift video files to `projects/pole-drift/`, then update the README gallery with direct links and update this report with remote file sizes / verification.
 - After the Pole Drift corrective pass, publish the corrected preview and its matching screen recording as a new chronological gallery entry; retain the original preview as history.
+
+
+## Latest update — Pole Drift files verified on GitHub (2026-11-19)
+The owner uploaded the Pole Drift project files to the repository root-level `pole-drift/` directory (not `projects/pole-drift/`). The remote GitHub contents listing confirms:
+- `pole-drift/preview.mp4` — 703,893 bytes; the 15-second 640×360, 24 fps H.264 preview.
+- `pole-drift/pole drift screen recording.mp4` — 20,964,843 bytes; corresponding production screen recording.
+- `pole-drift/pole_drift.blend` — 250,730 bytes; editable Blender scene.
+- `pole-drift/build_pole_drift.py` — 23,528 bytes.
+- `pole-drift/production_notes.md` — 4,503 bytes.
+- `pole-drift/render_pole_drift.py` — 960 bytes.
+- `pole-drift/verify_pole_drift.py` — 5,704 bytes.
+- `pole-drift/preview.png` — 224,610 bytes.
+- `pole-drift/review_contact.png` — 355,208 bytes.
+- `pole-drift/pole_drift.blend1` — 250,709 bytes (Blender backup file; retained as uploaded).
+
+README gallery links now use the actual root-level paths and both videos are verified present. No files were moved or renamed. The earlier statement that Pole Drift upload was pending is superseded by this update. The review decision remains NEEDS FIXES before final render: improve camera-edge clearance, exit framing, wheel placement, and smoke treatment. The documentation checkpoint is created directly on GitHub; no local commit or push.
+

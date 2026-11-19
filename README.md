@@ -34,12 +34,16 @@ A first end-to-end check that Antigravity could control a live Blender session t
 ### 2. Pole Drift — first production preview
 **Status:** Preview rendered; awaiting corrective pass and independent visual approval
 
-A low-poly sports car enters a nighttime drift arena, circles an illuminated pole in a sustained drift, and begins its exit. The preview demonstrates the first complete animation production workflow beyond the integration fixture.
+A low-poly sports car enters a nighttime drift arena, circles an illuminated pole in a sustained drift, and begins its exit. This is the first full production animation preview beyond the integration fixture.
 
-- **Render target:** 640×360 landscape, 24 fps, 360 frames / 15 seconds, Eevee, 8 samples, H.264.
+- **Rendered video:** [preview.mp4](pole-drift/preview.mp4)
+- **Screen recording:** [pole drift screen recording.mp4](pole-drift/pole%20drift%20screen%20recording.mp4)
+- **Editable Blender project:** [pole_drift.blend](pole-drift/pole_drift.blend)
+- **Preview still:** [preview.png](pole-drift/preview.png)
+- **Production notes:** [production_notes.md](pole-drift/production_notes.md)
+- **Render settings:** Eevee, 640×360 landscape, 24 fps, 360 frames / 15 seconds, 8 samples, H.264.
 - **Scene:** low-poly orange sports car, illuminated central pole, nighttime asphalt arena, skid marks, stylized tire smoke, cyan/blue ambient accents and warm pole lighting.
-- **Review:** technical checks passed; visual corrections are still required for camera-edge clearance, exit framing, wheel placement, and smoke presentation.
-- **Rendered video and screen recording:** not yet present in the GitHub repository. Local outputs must be uploaded before links can be published here.
+- **Review:** technical checks passed; visual corrections are still required for camera-edge clearance, exit framing, wheel placement, and smoke presentation. Do not treat this preview as final.
 
 ## Production principles
 1. Use real Blender scenes and editable `.blend` files.
@@ -54,7 +58,7 @@ A low-poly sports car enters a nighttime drift arena, circles an illuminated pol
 ## Repository layout
 - `current report.md` — durable project status and verification log.
 - `projects/integration-smoke-test/` — first verified Blender production test.
-- `projects/pole-drift/` — first full production animation.
+- `pole-drift/` — first full production animation and its published outputs.
 - `docs/` — architecture and workflow documentation (to be developed).
 - `agents/` — agent roles and orchestration (to be developed).
 - `scripts/` — Blender and production automation (to be developed).
