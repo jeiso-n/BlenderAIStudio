@@ -1,25 +1,38 @@
-# Production Notes � Integration Smoke Test
+# Production Notes — Integration Smoke Test
 
-Built through BlendRelay MCP (`execute_blender_python`) in a live Blender 5.3.0 session; rendered with Blender background (CLI) Eevee.
+Built through BlendRelay MCP (`execute_blender_python`) in a live Blender 5.3.0 session; rendered with Blender background (CLI) using Eevee.
 
 ## Scene
-- Studio: dark floor (glossy), backdrop wall, metallic pedestal, dark navy world.
-- Hero: metallic icosahedron (`HeroIcosahedron`) + emissive pink torus ring (`HeroRing`) at pedestal.
-- Title: 3D text `Title_BLENDER_AI_STUDIO` ("BLENDER AI" / "STUDIO", two lines for vertical fit), emissive material.
-- Lights: 3 area lights - warm key, cyan rim, magenta fill (track-to constraints on the hero).
-- Camera: `Camera`, 38 mm, track-to on `LookTarget`, portrait framing.
+- Dark studio with glossy floor, backdrop wall, metallic pedestal, and dark navy world.
+- Hero: metallic icosahedron (`HeroIcosahedron`) with emissive pink torus ring (`HeroRing`).
+- Title: 3D text `Title_BLENDER_AI_STUDIO` on two lines: “BLENDER AI” / “STUDIO”.
+- Three area lights: warm key, cyan rim, and magenta fill.
+- Active camera: `Camera`, 38 mm, portrait framing and track-to target.
 
-## Animation (frames 1-120, 24 fps = 5 s)
-- Hero: Z rotation 0->360 deg, LINEAR (seamless loop); gentle hover (Bezier, 3 keys).
-- Ring: Z rotation 0->-360 deg, LINEAR; same hover.
-- Title: scale 0.01->1 and rise 3.9->4.5 over frames 1-36, Bezier ease.
+## Animation
+- Frames 1–120 at 24 fps (5 seconds).
+- Hero rotates 360° around Z and gently hovers.
+- Ring counter-rotates 360° and gently hovers.
+- Title scales in and rises over frames 1–36 with eased interpolation.
+- Keyframes were read back from Blender and confirmed.
 
 ## Render settings
-- Eevee (`BLENDER_EEVEE`), 24 TAA samples, 540x960, 24 fps.
-- Video: FFmpeg MPEG-4 container, H.264, medium quality. (Blender 5.x: set `image_settings.media_type='VIDEO'` before `file_format='FFMPEG'`.)
-- Preview: frame 60 -> `preview.png` (~5 s). Animation: 120 frames in ~300 s wall-clock.
+- Eevee (`BLENDER_EEVEE`), 24 samples, 540×960, 24 fps.
+- Video: FFmpeg container, H.264, medium quality.
+- Preview: frame 60, saved as `preview.png`.
+- Animation: 120 frames, rendered in approximately 300 seconds.
+
+## Verified outputs
+- `integration_smoke_test.blend` — editable Blender project.
+- `preview.png` — 540×960 rendered still.
+- `animation.mp4` — H.264, 540×960, 24 fps, 120 frames, 5.000 seconds (independently checked with FFprobe).
+- `production_notes.md` — this document.
 
 ## Limitations
-- Low resolution/samples chosen for the 8 GB, integrated-GPU machine; no motion blur, no textures.
-- Title appears with scale/rise only (no fade).
-- Animation rendered via Blender CLI of the saved file, not inside the GUI session. The session's open document is now this project; the default startup file was not touched.
+- Low resolution and sample count selected for an 8 GB-class RAM, integrated-GPU workstation.
+- No motion blur; title has scale/rise animation but no fade.
+- Animation rendered with Blender CLI from the saved project, not through the GUI render operator.
+- The default Blender startup file was not overwritten; the open GUI document was replaced with this test scene.
+
+## Integration result
+PASS. Antigravity successfully connected to Blender 5.3.0 through BlendRelay MCP 0.7.8 and performed a read-only scene inspection. It then created the scene, materials, lighting, camera, keyframes, saved the project, and rendered outputs.
